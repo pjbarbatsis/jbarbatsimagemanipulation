@@ -26,12 +26,13 @@ class MainActivity: AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun populateImageView(drawable: Int, imageView: ImageView) {
+
         Picasso.with(this).load(drawable)
                 .centerInside()
                 .resize(600, 600)
                 .into(imageView)
 
-        // https://medium.com/@NumberShapes/kotlin-draggable-imageview-480c1573cde5
+        // information: https://medium.com/@NumberShapes/kotlin-draggable-imageview-480c1573cde5
         val listener = View.OnTouchListener(function = {view, motionEvent ->
             if (motionEvent.action == MotionEvent.ACTION_MOVE) {
 
