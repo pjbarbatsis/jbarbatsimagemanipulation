@@ -12,8 +12,6 @@ import nerderylabs.com.jbarbatsimagemanipulation.R
 
 class MainActivity : AppCompatActivity() {
 
-    private var xCoOrdinate: Float = 0.toFloat()
-    private var yCoOrdinate: Float = 0.toFloat()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +23,23 @@ class MainActivity : AppCompatActivity() {
         populateImageView(R.drawable.image2, image_two)
         populateImageView(R.drawable.image3, image_three)
         populateImageView(R.drawable.image4, image_four)
+
+        // https://medium.com/@NumberShapes/kotlin-draggable-imageview-480c1573cde5
+        var listener = View.OnTouchListener(function = {view, motionEvent ->
+            if (motionEvent.action == MotionEvent.ACTION_MOVE) {
+
+                view.y = motionEvent.rawY - view.height
+                view.x = motionEvent.rawX - view.width/2
+                view.bringToFront()
+            }
+            true
+        })
+
+        image_zero.setOnTouchListener(listener)
+        image_one.setOnTouchListener(listener)
+        image_two.setOnTouchListener(listener)
+        image_three.setOnTouchListener(listener)
+        image_four.setOnTouchListener(listener)
     }
 
     private fun populateImageView(drawable: Int, view: ImageView) {
