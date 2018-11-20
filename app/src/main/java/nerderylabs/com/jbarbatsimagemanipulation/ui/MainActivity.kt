@@ -16,8 +16,6 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // probably a less annoying way to do this???
-
         populateImageView(R.drawable.image0, image_zero)
         populateImageView(R.drawable.image1, image_one)
         populateImageView(R.drawable.image2, image_two)
